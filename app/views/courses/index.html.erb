@@ -1,0 +1,16 @@
+<h1>Courses</h1>
+<% @courses.each do |course| %>
+	<h3><%= course.title %></h3>
+	<% course.assignments.each do |assignment| %>
+		<% if assignment.questionone %>
+		<p>Assignments</p>
+		<li><%= assignment.questionone %></li>
+		<li><%= assignment.questiontwo %></li>
+		<% end %>
+	<% end %>
+<% end %>
+<h1>Add a course</h1>
+<%= form_for :course do |f|%>
+	<p>Title: <%= f.text_field :title %></p>
+	<p><%= submit_tag "Submit" %></p>
+<% end %>

@@ -1,0 +1,38 @@
+<h1>Here's all the courses for <%= @student.fname %> <%= @student.lname %>.</h1>
+
+<% @datas.each do |data| %>
+	<h2><%= data["course"].title %></h2>
+	<h3>Assignments</h3>
+	<% data["assignments"].each do |assign| %>
+		<p>Questions:</p>
+		<p>Question One: <%= assign["assign"].questionone %></p>
+		<p>Question Two: <%= assign["assign"].questiontwo %></p>
+		<% if assign["answer"] == nil %>
+			<p>Do This Assignment: </p>
+			<%= form_for :answer, :url => answers_path do |f| %>
+				<p>Question One: <%= f.text_field :answerone %></p>
+				<p>Question Two: <%= f.text_field :answertwo %></p>
+				<p><%= f.hidden_field :assignment_id, :value => assign["assign"].id %></p>
+				<p><%= f.hidden_field :student_id, :value => @student.id %></p>
+				<p><%= submit_tag "Submit" %></p>
+			<% end %>
+		<% else %>
+			<p>Answers:</p>
+			<p>Answer One: <%= assign["answer"].answerone %></p>
+			<p>Answer Two: <%= assign["answer"].answertwo %></p>
+		<% end %>
+		<hr>
+	<% end %>
+	<hr>
+
+<% end %>
+
+<h1>Add a class</h1>
+<%= form_for :course do |f| %>
+	<p><%= f.text_field :title %></p>
+	<p><%= submit_tag "Submit" %></p>
+<% end %>
+<p>You can choose from: </p>
+<% @courses.each do |course| %>
+	<p><%= course.title %></p>
+<% end %>

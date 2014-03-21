@@ -1,0 +1,9 @@
+<h1>Assignments</h1>
+
+<%= form_for :assignment do |f| %>
+	<p>Course ID: <%= f.number_field :course_id %></p>
+	<p>Question One: <%= f.text_field :questionone %></p>
+	<p>Question Two: <%= f.text_field :questiontwo %></p>
+	<p><%= submit_tag "Submit" %></p>
+
+<% end %>

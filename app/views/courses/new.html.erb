@@ -1,0 +1,5 @@
+<h1>Add a course here</h1>
+<%= form_for :course do |f|%>
+	<p>Title: <%= f.text_field :title %></p>
+	<p><%= submit_tag "Submit" %></p>
+<% end %>
